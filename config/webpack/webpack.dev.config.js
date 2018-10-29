@@ -2,8 +2,9 @@ const webpack = require('webpack')
 const WebpackOnBuildPlugin = require('on-build-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const WebpackShellPlugin = require('webpack-shell-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const path = require('path');
 
 process.env.NODE_ENV = 'development';
@@ -29,6 +30,29 @@ const config = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // publicPath: '../'
+                        }
+                    },
+                    "css-loader"
+                ]
+            },
+            {
+                test: /\.(jpe?g|png|gif)$/i,
+                loaders: [
+                    'file?hash=sha512&digest=hex&name=[name].[ext]',
+                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                ]
+            },
+            {
+                test: /\.(svg|otf|ttf|woff|woff2|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "file-loader"
             }
         ]
     },
@@ -43,6 +67,10 @@ const config = {
             'process.env': {
                 NODE_ENV: '"development"',
             }
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         }),
         new CleanWebpackPlugin(['build']),
         new HtmlWebpackPlugin({

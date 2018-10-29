@@ -1,0 +1,67 @@
+[{
+    "users": [
+        {
+            "id": 1,
+            "name": "Alexey",
+            "email": "blabla@mail.ru",
+            "created_at": 1224324545,
+            "updated_at": 1224324545
+        }
+    ],
+    "toys": [
+        {
+            "id": 1,
+            "name": "The best toy ever",
+            "src": [
+                {
+                    "id": 1,
+                    "uri": "http://blabla"
+                }
+            ],
+            "conditions": [
+                {
+                    "id": 1,
+                    "comment": ""
+                }
+            ],
+            "status": 1,
+            "owner": 1,
+            "created_at": 1224324545,
+            "updated_at": 1224324545
+        }
+    ],
+    "conditions": [
+        {
+            "id": 1,
+            "description": "test description",
+            "created_at": 1224324545,
+            "updated_at": 1224324545
+        }
+    ],
+    "requests": [
+        {
+            "id": 1,
+            "from": 2,
+            "to": 3,
+            "toy": 3,
+            "status": 1,
+            "created_at": 1224324545,
+            "updated_at": 1224324545
+        }
+    ],
+    "messages": [
+        {
+            "request_id": 1,
+            "from": 1,
+            "to": 2,
+            "text": 1,
+            "attachments": [
+                {
+                    "id": 1,
+                    "src": "http://blabla",
+                    "preview": "http://blablabla"
+                }
+            ]
+        }
+    ]
+}]
